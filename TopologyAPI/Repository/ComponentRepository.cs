@@ -17,15 +17,48 @@ namespace TopologyAPI.Repository
         }
 
 
-        public ICollection<Component> GetComponents()
+        public ICollection<RootComponent> GetComponents()
         {
-            return _db.Components.OrderBy(a => a.Type).ToList();
+            return _db.Components.OrderBy(a => a.Id).ToList();
         }
 
-        public Component GetComponent(int ComponentId)
+        public RootComponent GetComponent(int ComponentId)
         {
             return _db.Components.FirstOrDefault(a => a.Id == ComponentId);
         }
 
+        public bool ComponentExist(string name)
+        {
+            bool value = _db.Components.Any(a => a.Type.ToLower().Trim() == name.ToLower().Trim());
+            return value;
+        }
+
+        public bool ComponentExist(int id)
+        {
+            return _db.Components.Any(a => a.Id == id);
+        }
+
+        public bool CreateComponent(RootComponent component)
+        {
+            _db.Components.Add(component);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            return _db.SaveChanges() >= 0 ? true : false;
+        }
+
+        public bool UpdateComponent(RootComponent component)
+        {
+            _db.Components.Update(component);
+            return Save();
+        }
+
+        public bool DeleteComponent(RootComponent Component)
+        {
+            _db.Components.Remove(Component);
+            return Save();
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TopologyAPI.Models
 {
-    public class Component
+    public class RootComponent
     {
         [Key]
         public int Id { get; set; } 

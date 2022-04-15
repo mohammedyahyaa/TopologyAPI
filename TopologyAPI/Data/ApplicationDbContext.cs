@@ -10,7 +10,7 @@ namespace TopologyAPI.Data
 
         }
 
-        public DbSet<Component> Components { get; set; }
+        public DbSet<RootComponent> Components { get; set; }
        
     }
 }

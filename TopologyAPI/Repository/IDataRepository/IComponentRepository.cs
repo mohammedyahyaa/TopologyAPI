@@ -4,14 +4,16 @@ namespace TopologyAPI.Models.DataRepository
 {
     public interface IComponentRepository
     {
-        ICollection<Component> GetComponents();
-        Component GetComponent(int nationalParkId);
+        ICollection<RootComponent> GetComponents();
+        RootComponent GetComponent(int nationalParkId);
 
-        //bool NationalParkExists(string name);
-        //bool NationalParkExists(int id);
-        //bool CreateNationalPark(NationalPark nationalPark);
-        //bool UpdateNationalPark(NationalPark nationalPark);
-        //bool DeleteNationalPark(NationalPark nationalPark);
-        //bool Save();
+        bool ComponentExist(string name);
+        bool ComponentExist(int id);
+        bool CreateComponent(RootComponent component);
+
+        bool UpdateComponent(RootComponent component);
+
+        bool DeleteComponent(RootComponent Component);
+        bool Save();
     }
 }
